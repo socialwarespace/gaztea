@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Latest compiled and minified CSS -->
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+
+<header>
+
+    <h1>BoxemonGo herri bilatzailea</h1>
+    <form class="form-inline">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4>Izena_eus-en dauka:
+                <select class="selectpicker" id="izenaEus" multiple>
+
+                    {% for letter in "abcdefghijklmnñopqrstuvwxyz" %}
+                        <option>{{ letter }}</option>
+                    {% endfor %}
+
+                </select>
+            </h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4>Izena_cast-en dauka:
+                <select class="selectpicker" id="izenaCast" multiple>
+                    {% for letter in "abcdefghijklmnñopqrstuvwxyz" %}
+                        <option>{{ letter }}</option>
+                    {% endfor %}
+
+
+                </select>
+            </h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4>Izena_eus-en ez dauka:
+                <select class="selectpicker" id="izenaEusEz" multiple>
+                    {% for letter in "abcdefghijklmnñopqrstuvwxyz" %}
+                        <option>{{ letter }}</option>
+                    {% endfor %}
+
+
+                </select>
+            </h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4>Izena_cast-en ez dauka:
+                <select class="selectpicker" id="izenaCastEz" multiple>
+                    {% for letter in "abcdefghijklmnñopqrstuvwxyz" %}
+                        <option>{{ letter }}</option>
+                    {% endfor %}
+
+
+                </select>
+            </h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4>Probintzian dago:
+                <select class="selectpicker" id="probintzia" multiple>
+                    <option>Araba</option>
+                    <option>Bizkaia</option>
+                    <option>Gipuzkoa</option>
+                    <option>Nafarroa</option>
+                    <option>Zuberoa</option>
+                    <option>Nafarroa Beherea</option>
+                    <option>Lapurdi</option>
+
+                </select>
+            </h4>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <h4>Probintzian ez dago:
+                <select class="selectpicker" id="probintziaEz" multiple>
+                    <option>Araba</option>
+                    <option>Bizkaia</option>
+                    <option>Gipuzkoa</option>
+                    <option>Nafarroa</option>
+                    <option>Zuberoa</option>
+                    <option>Nafarroa Beherea</option>
+                    <option>Lapurdi</option>
+
+                </select>
+            </h4>
+        </div>
+    </form>
+
+    <button class="btn btn-default" id="bilatu">Bilatu</button>
+
+</header>

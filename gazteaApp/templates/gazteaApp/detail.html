@@ -1,0 +1,91 @@
+{% include "orokorra/orriburua.html" %}
+
+
+{% block javascript %}
+    <script>
+        $(document).ready(function () {
+
+
+            $("#bilatu").click(function () {
+                var $izenaCast = $("#izenaCast").val();
+                var $izenaEus = $("#izenaEus").val();
+                var $izenaEzCast = $("#izenaCastEz").val();
+                var $izenaEzEus = $("#izenaEusEz").val();
+                var $probintzia = $("#probintzia").val();
+                var $probintziaEz = $("#probintziaEz").val();
+                var data = {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    izenaCast: $izenaCast,
+                    izenaEus: $izenaEus,
+                    izenaEzCast: $izenaEzCast,
+                    izenaEzEus: $izenaEzEus,
+                    probintzia: $probintzia,
+                    probintziaEz: $probintziaEz,
+
+                };
+
+                $.ajax({
+                    url: 'ajax/validate_herriak/',
+                    type: "POST",
+                    contentType: "application/json",
+
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    success: function (data) {
+                        var jsonObject = JSON.parse(data);
+                        console.log(jsonObject);
+
+                        $(".herriak").hide();
+                        for (var i = 0; i < jsonObject.length; i++) {
+                            $("#herria" + jsonObject[i].pk).show();
+
+                        }
+
+                    },
+
+                })
+                ;
+
+            })
+            ;
+
+
+        })
+        ;
+
+
+    </script>
+{% endblock %}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+
+        <th>Izena eus</th>
+        <th>Izena cast</th>
+        <th>Azalera</th>
+        <th>Biztanleak</th>
+        <th>Probintzia</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for herria in herriak %}
+        <tr class="herriak" id="herria{{ herria.pk }}">
+            <td>{{ herria.pk }}</td>
+            <td>{{ herria.izena_eus }}</td>
+            <td>{{ herria.izena_eus }}</td>
+            <td>{{ herria.azalera }}</td>
+            <td>{{ herria.biztanleak }}</td>
+            <td>{{ herria.probintzia }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+</table>
+<ul>
+
+</ul>
